@@ -6,6 +6,8 @@
 ## Ignore .idea folder
 .idea
 
+package-lock.json
+
 ## File-based project format:
 *.iws
 
