@@ -3,15 +3,14 @@
  */
 const mongoose = require('mongoose')
 
-let postSchema = mongoose.Schema({
-  title: {type: mongoose.Schema.Types.String, required: true},
+let commentSchema = mongoose.Schema({
   author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
-  comments: {type: mongoose.Schema.Types.ObjectId, ref: 'Comment'},
+  content: {type: mongoose.Schema.Types.String, required: true},
+  replies: {type: mongoose.Schema.Types.ObjectId, ref: 'Reply'},
   upVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   downVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   upVotesCount: { type: mongoose.Schema.Types.Number, default: 0 },
   downVotesCount: { type: mongoose.Schema.Types.Number, default: 0 }
 })
-const Post = mongoose.model('Post', postSchema)
-module.exports = Post
+const Comment = mongoose.model('Comment', commentSchema)
+module.exports = Comment
