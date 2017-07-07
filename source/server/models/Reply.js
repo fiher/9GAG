@@ -12,5 +12,5 @@ let replySchema = mongoose.Schema({
   upVotesCount: { type: mongoose.Schema.Types.Number, default: 0 },
   downVotesCount: { type: mongoose.Schema.Types.Number, default: 0 }
 })
-const Reply = mongoose.model('Comment', replySchema)
+const Reply = mongoose.model('Reply', replySchema)
 module.exports = Reply
