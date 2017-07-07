@@ -7,7 +7,7 @@ let postSchema = mongoose.Schema({
   title: {type: mongoose.Schema.Types.String, required: true},
   author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
-  comments: {type: mongoose.Schema.Types.ObjectId, ref: 'Comment'},
+  comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
   upVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   downVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   upVotesCount: { type: mongoose.Schema.Types.Number, default: 0 },

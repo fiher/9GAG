@@ -3,15 +3,14 @@
  */
 const mongoose = require('mongoose')
 
-let commentSchema = mongoose.Schema({
+let replySchema = mongoose.Schema({
   author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   content: {type: mongoose.Schema.Types.String, required: true},
-  post: {type: mongoose.Schema.Types.ObjectId, ref: 'Post'},
-  replies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Reply'}],
+  comment: {type: mongoose.Schema.Types.ObjectId, ref: 'Comment'},
   upVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   downVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   upVotesCount: { type: mongoose.Schema.Types.Number, default: 0 },
   downVotesCount: { type: mongoose.Schema.Types.Number, default: 0 }
 })
-const Comment = mongoose.model('Comment', commentSchema)
-module.exports = Comment
+const Reply = mongoose.model('Comment', replySchema)
+module.exports = Reply
