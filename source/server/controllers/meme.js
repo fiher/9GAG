@@ -1,4 +1,4 @@
-const Post = require('../models/Post')
+const Meme = require('../models/Meme')
 
 module.exports = {
   add: {

@@ -5,38 +5,38 @@ let userSchema = mongoose.Schema({
   username: {
     type: mongoose.Schema.Types.String,
     required: requiredMsg('Username'),
-    unique:  true
+    unique: true
   },
   password: {
-    type: mongoose.Schema.Types.String, required:
-      requiredMsg('Password')
+    type: mongoose.Schema.Types.String,
+    required: requiredMsg('Password')
   },
   salt: {type: mongoose.Schema.Types.String, required: true},
-  profilePicture: {type: mongoose.Schema.Types.String },
+  profilePicture: {type: mongoose.Schema.Types.String},
   firstName: {
     type: mongoose.Schema.Types.String,
-    required: requiredMsg('First name'),
+    required: requiredMsg('First name')
   },
   lastName: {
     type: mongoose.Schema.Types.String,
-    required: requiredMsg('Last name'),
+    required: requiredMsg('Last name')
   },
   age: {
     type: mongoose.Schema.Types.Number,
     min: [0, 'Age must be between 0 and 120'],
-    max: [120, 'Age must be between 0 and 120'],
+    max: [120, 'Age must be between 0 and 120']
   },
   gender: {
     type: mongoose.Schema.Types.String,
     enum: {
       values: ['Male', 'Female', 'Other'],
-      message: 'Gender should be either "Male", "Female" or "Other"',
-    },
+      message: 'Gender should be either "Male", "Female" or "Other"'
+    }
   },
-  posts: {type: mongoose.Schema.Types.ObjectId, ref: 'Post'},
+  memes: {type: mongoose.Schema.Types.ObjectId, ref: 'Meme'},
   comments: {type: mongoose.Schema.Types.ObjectId, ref: 'Comment'},
-  upvotedPosts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
-  downvotedPosts: [{type: mongoose.Schema.Types.ObjectId, ref: 'Post'}],
+  upvotedMemes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meme'}],
+  downvotedMemes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meme'}],
   roles: [{type: mongoose.Schema.Types.String, required: true}]
 })
 

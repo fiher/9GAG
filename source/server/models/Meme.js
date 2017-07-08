@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const requiredMsg = require('../utilities/requiredPropsMsg')
 
-let postSchema = mongoose.Schema({
+let memeSchema = mongoose.Schema({
   title: {
     type: mongoose.Schema.Types.String,
     required: requiredMsg('Title')
@@ -11,6 +11,7 @@ let postSchema = mongoose.Schema({
     type: mongoose.Schema.Types.Date,
     default: new Date(Date.now()).toISOString()
   },
+  memeUrl: {type: mongoose.Schema.Types.String, required: requiredMsg('Url')},
   category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
   comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
   upVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
@@ -19,6 +20,6 @@ let postSchema = mongoose.Schema({
   downVotesCount: { type: mongoose.Schema.Types.Number, default: 0 }
 })
 
-const Post = mongoose.model('Post', postSchema)
+const Post = mongoose.model('Meme', memeSchema)
 
 module.exports = Post

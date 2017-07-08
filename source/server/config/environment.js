@@ -1,4 +1,4 @@
 
 module.exports = {
-    database: process.env.MONGO_URI || 'localhost/DankMemesDb'
-};
+  database: process.env.MONGO_URI || 'localhost/DankMemesDb'
+}

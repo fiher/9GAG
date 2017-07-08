@@ -25,7 +25,7 @@ export default class Footer extends React.Component {
               <p> @ 2017 SoftUni. </p>
             </div>
             <div className='col-sm-3'>
-              <h3 className='lead'>Authors</h3>
+              <h3 className='lead'>Dank Programmers</h3>
               <a href='https://github.com/fiher'>
                 Pavlin Petkov - Luci
               </a>

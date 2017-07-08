@@ -7,7 +7,7 @@ let commentSchema = mongoose.Schema({
     type: mongoose.Schema.Types.Date,
     default: new Date(Date.now()).toISOString()
   },
-  post: {type: mongoose.Schema.Types.ObjectId, ref: 'Post'},
+  meme: {type: mongoose.Schema.Types.ObjectId, ref: 'Meme'},
   replies: [{type: mongoose.Schema.Types.ObjectId, ref: 'Reply'}],
   upVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   downVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
