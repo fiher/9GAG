@@ -6,8 +6,8 @@ module.exports = {
   },
   generateHashedPassword: (salt, pwd) => {
     return crypto
-    .createHmac('sha256', salt)
-    .update(pwd)
-    .digest('hex');
+      .createHmac('sha256', salt)
+      .update(pwd)
+      .digest('hex');
   }
 }
