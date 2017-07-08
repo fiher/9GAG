@@ -1,6 +1,4 @@
-/**
- * Created by PC on 08-Jul-17.
- */
+
 const config = require('../config/encryption-config')
 
 export default class Decryption {
