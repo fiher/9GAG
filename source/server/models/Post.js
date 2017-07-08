@@ -1,11 +1,16 @@
-/**
- * Created by PC on 08-Jul-17.
- */
 const mongoose = require('mongoose')
+const requiredMsg = require('../utilities/requiredPropsMsg')
 
 let postSchema = mongoose.Schema({
-  title: {type: mongoose.Schema.Types.String, required: true},
+  title: {
+    type: mongoose.Schema.Types.String,
+    required: requiredMsg('Title')
+  },
   author: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  createdOn: {
+    type: mongoose.Schema.Types.Date,
+    default: new Date(Date.now()).toISOString()
+  },
   category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
   comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
   upVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
@@ -13,5 +18,7 @@ let postSchema = mongoose.Schema({
   upVotesCount: { type: mongoose.Schema.Types.Number, default: 0 },
   downVotesCount: { type: mongoose.Schema.Types.Number, default: 0 }
 })
+
 const Post = mongoose.model('Post', postSchema)
+
 module.exports = Post
