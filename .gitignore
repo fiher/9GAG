@@ -6,6 +6,9 @@
 ## Ignore .idea folder
 .idea
 
+README.md
+LICENSE
+
 package-lock.json
 
 ## File-based project format:
