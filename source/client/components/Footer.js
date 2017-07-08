@@ -2,7 +2,7 @@
  * Created by PC on 08-Jul-17.
  */
 import React from 'react'
-import { Link } from 'react-router'
+
 
 export default class Footer extends React.Component {
 
