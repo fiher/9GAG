@@ -1,7 +1,7 @@
 const Post = require('../models/Post')
 
 module.exports = {
-  add:  {
+  add: {
     post: (req, res) => {
 
     }
