@@ -6,8 +6,10 @@ module.exports = {
 
     }
   },
-  post: (req, res) => {
+  addCategory: {
+    post: (req, res) => {
 
+    }
   },
   searchByCategory: {
     get: (req, res) => {
