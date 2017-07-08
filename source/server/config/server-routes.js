@@ -16,9 +16,9 @@ module.exports = (app) => {
     controllers.comment.getMemeComments.get)
   app.post('/api/memes/:memeId/comments',
     controllers.comment.getMemeComments.post)
-  app.get('/api/memes/:memeId/comments',
+  app.get('/api/memes/:memeId/:commentId/replies',
     controllers.reply.getCommentReplies.get)
-  app.post('/api/memes/:memeId/comments',
+  app.post('/api/memes/:memeId/:commentId/replies',
     controllers.reply.getCommentReplies.post)
   app.get('/api/memes', controllers.meme.search.get)
 
