@@ -35,8 +35,8 @@ let userSchema = mongoose.Schema({
   },
   memes: {type: mongoose.Schema.Types.ObjectId, ref: 'Meme'},
   comments: {type: mongoose.Schema.Types.ObjectId, ref: 'Comment'},
-  upvotedMemes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meme'}],
-  downvotedMemes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meme'}],
+  upVotedMemes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meme'}],
+  downVotedMemes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meme'}],
   roles: [{type: mongoose.Schema.Types.String, required: true}]
 })
 

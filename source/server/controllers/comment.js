@@ -20,7 +20,8 @@ module.exports = {
         meme: memeId,
         content: req.body.content,
         replies: [],
-        upvotes: []
+        upVotes: [],
+        downVotes: []
       }
 
       Comment.create(commentData).then(comment => {
