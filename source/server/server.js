@@ -13,5 +13,3 @@ module.exports = () => {
   // Import server-routes.
   require('./config/server-routes')(app)
 }
-
-

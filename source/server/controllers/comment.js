@@ -15,18 +15,21 @@ module.exports = {
     post: (req, res) => {
       let userId = req.user._id
       let memeId = req.params.memeId
-      let commentData = {
-        author: userId,
-        meme: memeId,
-        content: req.body.content,
-        replies: [],
-        upVotes: [],
-        downVotes: []
+      let content = req.body.content
+      if (content.length < 1) {
+      } else {
+        let commentData = {
+          author: userId,
+          meme: memeId,
+          content: req.body.content,
+          replies: [],
+          upVotes: [],
+          downVotes: []
+        }
+        Comment.create(commentData).then(comment => {
+          res.status(200).send({comment})
+        })
       }
-
-      Comment.create(commentData).then(comment => {
-        res.status(200).send({comment})
-      })
     }
   }
 }

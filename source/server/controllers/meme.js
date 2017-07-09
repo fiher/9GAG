@@ -8,7 +8,12 @@ module.exports = {
   },
   getAllMemes: {
     get: (req, res) => {
-
+      Meme.find({})
+        .sort({createdOn: -1})
+        .populate('author', 'category', 'comments')
+        .then(memes => {
+          res.status(200).send(memes)
+        })
     }
   },
   getUserPosts: {
