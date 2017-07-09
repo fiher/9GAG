@@ -1,8 +1,6 @@
-/**
- * Created by PC on 08-Jul-17.
- */
-import React from 'react'
-export default class Footer extends React.Component {
+import React, { Component } from 'react'
+
+export default class Footer extends Component {
   render () {
     return (
       <footer>
@@ -33,6 +31,6 @@ export default class Footer extends React.Component {
           </div>
         </div>
       </footer>
-  )
+    )
   }
 }
