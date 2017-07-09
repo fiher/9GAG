@@ -51,9 +51,18 @@ export default class Decryption {
     return text
   }
 
-  decypher5 (text) {
-    return text
+  cypher5 (text) {
+    let muttableText = text.split()
+    let textLength = text.length
+    for (let i = 0; i < textLength; i++) {
+      let asciiChange = i + 1
+      let letterASCII = text.charCodeAt(i)
+      letterASCII += asciiChange
+      muttableText[i] = String.fromCharCode(letterASCII)
+    }
+    return muttableText.join('')
   }
+
   static reverse (s) {
     return s.split('').reverse().join('')
   }
