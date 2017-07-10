@@ -1,4 +1,3 @@
-
 function createFileLoader (image) {
   let returnResponse = ''
   let imageData = {

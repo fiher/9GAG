@@ -6,8 +6,7 @@ module.exports = {
     post: (req, res) => {
       let userData = req.body
 
-      if (userData.password &&
-        userData.password !== userData.confirmedPassword) {
+      if (userData.password && userData.password !== userData.confirmedPassword) {
         return res.status(400).send({
           message: 'Passwords do not match'
         })
