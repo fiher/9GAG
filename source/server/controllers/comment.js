@@ -17,6 +17,7 @@ module.exports = {
       let memeId = req.params.memeId
       let content = req.body.content
       if (content.length < 1) {
+        return res.status(401).send({ message: 'Content cannot be empty' })
       } else {
         let commentData = {
           author: userId,
