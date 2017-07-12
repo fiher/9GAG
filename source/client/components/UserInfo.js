@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class AuthorInfo extends React.Component {
+export default class UserInfo extends React.Component {
   render() {
     return (
       <div>
