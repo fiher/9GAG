@@ -130,10 +130,48 @@ export default class Decryption {
   }
 
   cypher2 (text, publicKey, privateKey, secretKey) {
+    let textLegnth = text.length
+    let insertIndex = Math.floor(textLegnth / 3.0)
+    text = this.reverse(text)
+    let textAsList = text.split()
+    let publicKeyLength = publicKey.length
+    let privateKeyLength = privateKey.length
+    let secretKeyLength = secretKey.length
+    for (let i = 0; i < publicKeyLength; i++) {
+      textAsList.splice(insertIndex, 0, publicKey[i])
+    }
+    insertIndex++
+    for (let i = 0; i < privateKeyLength; i++) {
+      textAsList.splice(insertIndex + publicKeyLength, 0, privateKey[i])
+    }
+    insertIndex++
+    for (let i = 0; i < secretKeyLength; i++) {
+      textAsList.splice(insertIndex + publicKeyLength + privateKeyLength, 0, secretKey[i])
+    }
+    text = textAsList.join('')
+    text = this.reverse(text)
     return text
   }
 
   cypher3 (text) {
+    let textLength = text.length
+    let cypheredText = []
+    let isOdd = false
+    let counter = textLength / 2
+    if (textLength % 2 !== 0) {
+      counter = Math.floor(counter)
+      isOdd = true
+    }
+
+    for (let i = 0; i < counter; i++) {
+      cypheredText.push(text[textLength - 1 - i])
+      cypheredText.push(text[i])
+    }
+
+    if (isOdd) {
+      cypheredText.push(text[Number(counter)])
+    }
+    text = cypheredText.join('')
     return text
   }
 
