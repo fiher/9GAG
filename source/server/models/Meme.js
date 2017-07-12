@@ -12,7 +12,7 @@ let memeSchema = mongoose.Schema({
     default: new Date(Date.now()).toISOString()
   },
   memeUrl: {type: mongoose.Schema.Types.String, required: requiredMsg('Url')},
-  category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
+  category: {type: mongoose.Schema.Types.String, required: requiredMsg('Category')},
   comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
   upVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   downVotes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],

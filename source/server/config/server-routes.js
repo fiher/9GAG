@@ -9,8 +9,9 @@ module.exports = (app) => {
   // app.get('/api/user/:userId/rated', controllers.meme.getUserPosts.get)
 
   // Memes routes
-  // app.get('/api/memes/all', controllers.meme.getAllMemes.get)
+  app.get('/api/memes/all', controllers.meme.getAllMemes.get)
   app.post('/api/memes/add', controllers.meme.add.post)
+  app.get('/api/memes/:memeId', controllers.meme.getOneMeme.get)
   // app.get('/api/memes/:memeId/comments',
   //   controllers.comment.getMemeComments.get)
   // app.post('/api/memes/:memeId/comments',

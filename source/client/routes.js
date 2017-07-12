@@ -9,6 +9,7 @@ import MemeInfo from './components/MemeInfo'
 import AuthorInfo from './components/UserInfo'
 import UserRegister from './components/UserRegister'
 import UserLogin from './components/UserLogin'
+import CreateMeme from './components/CreateMeme'
 
 export default (
   <Route component={ App }>
@@ -19,5 +20,6 @@ export default (
     <Route path='/memes/:id' component={MemeInfo}/>
     <Route path='/users/all' component={AllUsers}/>
     <Route path='/users/profile/:id' component={AuthorInfo}/>
+    <Route path='/createMeme' component={CreateMeme}/>
   </Route>
 )
