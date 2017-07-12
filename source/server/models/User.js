@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const requiredMsg = require('../utilities/requiredPropsMsg')
+const encryption = require('../utilities/encryption')
 
 let userSchema = mongoose.Schema({
   username: {
@@ -23,7 +24,13 @@ let userSchema = mongoose.Schema({
   downVotedMemes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Meme'}],
   roles: [{type: mongoose.Schema.Types.String}]
 })
+userSchema.method({
+  authenticate: function (password) {
+    let hashedPassword = encryption.generateHashedPassword(this.salt, password)
 
+    return hashedPassword === this.password
+  }
+})
 const User = mongoose.model('User', userSchema)
 
 module.exports = User

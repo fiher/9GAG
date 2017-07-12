@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const encryption = require('../utilities/encryption');
+const encryption = require('../utilities/encryption')
 
 module.exports = {
   register: {
@@ -45,7 +45,7 @@ module.exports = {
         if (!user || !user.authenticate(userData.password)) {
           return res.status(401).send({ message: 'Wrong credentials!' })
         }
-
+        console.log(userData.username)
         req.logIn(user, (err, user) => {
           if (err) {
             return res.status(401).send({ message: err })
