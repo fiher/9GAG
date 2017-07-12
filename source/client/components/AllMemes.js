@@ -35,23 +35,6 @@ export default class AllMemes extends React.Component {
                   index={i}/>
       )
     })
-    // this.state.memes.forEach((meme, i) => {
-    //   memes.push(
-    //     <div className='meme' key={i+1}>
-    //       <div className='row'>
-    //         <div className='title'>
-    //           <span>{meme.title}</span>
-    //         </div>
-    //         <div className='row'>
-    //           <div className='date'>
-    //             <span>{meme.createdOn}</span>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <img src={meme.memeUrl}/>
-    //     </div>
-    //   )
-    // })
 
     return (
       <div className="container">
