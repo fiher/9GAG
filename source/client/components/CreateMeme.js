@@ -3,13 +3,14 @@ import React from 'react'
 import CreateMemeStore from '../stores/CreateMemeStore'
 import CreateMemeActions from '../actions/CreateMemeActions'
 import ReactFileReader from 'react-file-reader'
-
+import CategoryActions from '../actions/CategoryActions'
+import CategoryStore from '../stores/CategoryStore'
 import { createFileLoader } from '../imgur-api'
 export default class CreateMeme extends React.Component {
   constructor (props) {
     super(props)
     this.state = CreateMemeStore.getState()
-
+    this.categories = CategoryStore.getState()
     this.onChange = this.onChange.bind(this)
     this.handleMemeChange = this.handleMemeChange.bind(this)
     this.createMeme = this.createMeme.bind(this)
@@ -18,6 +19,10 @@ export default class CreateMeme extends React.Component {
   }
   componentDidMount () {
     CreateMemeStore.listen(this.onChange)
+    CategoryActions.getAllCategories()
+  }
+  componentWillUnmount () {
+    CreateMemeStore.unlisten(this.onChange)
   }
   onChange (state) {
     this.setState(state)
@@ -31,6 +36,14 @@ export default class CreateMeme extends React.Component {
     CreateMemeActions.postMeme(this.state)
   }
   render () {
+    let categories = []
+      this.categories.categories.forEach((category, i) => {
+        categories.push(
+          <option key={i + 1}>
+            {category.name}
+          </option>
+        )
+      })
     return (
       <div>
         <div className='has-error'>
@@ -51,10 +64,7 @@ export default class CreateMeme extends React.Component {
               value={this.state.title}/>
           </div>
           <select onChange={CreateMemeActions.handleCategoryChange}>
-            <option>NSFW</option>
-            <option>Girls</option>
-            <option>SoftUni</option>
-            <option>Bitch please</option>
+            {categories}
           </select>
           <ReactFileReader base64= {true} handleFiles={CreateMemeActions.handleImageChange}>
             <button className='btn'>Upload</button>
