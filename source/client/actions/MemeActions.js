@@ -5,7 +5,9 @@ class MemeActions {
       'getAllMemesSuccess',
       'getAllMemesFail',
       'postMemeSuccess',
-      'postMemeFail'
+      'postMemeFail',
+      'getMemesByCategorySuccess',
+      'getMemesByCategoryFail'
     )
   }
   getAllMemes () {
@@ -34,6 +36,17 @@ class MemeActions {
       .fail(err => this.postMemeFail(err))
 
     return true
+  }
+  getMemesByCategory (category) {
+    console.log('made it bitches')
+    let request = {
+      method: 'get',
+      url: '/api/categories/' + category
+    }
+
+    $.ajax(request)
+      .done(data => this.getMemesByCategorySuccess(data))
+      .fail(err => this.getMemesByCategoryFail(err))
   }
 }
 

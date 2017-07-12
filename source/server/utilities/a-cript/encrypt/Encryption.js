@@ -1,6 +1,6 @@
 const config = require('../config/encryption-config')
 
-class Encryption {
+export default class Encryption {
   constructor () {
     this.sequence = config.sequence
     this.secretKey = config.secretKey
@@ -225,6 +225,3 @@ class Encryption {
     return s.split('').reverse().join('')
   }
 }
-let encryption = new Encryption()
-let encryptedText = encryption.crypt('pesho', 'gosho', 'misho')
-console.log(encryptedText)

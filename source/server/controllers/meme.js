@@ -26,9 +26,8 @@ module.exports = {
           console.log(memes)
           res.status(200).send(memes)
         }).catch((err) => {
-        res.status(400).send(err)
-      })
-
+          res.status(400).send(err)
+        })
     }
   },
   getUserPosts: {

@@ -21,6 +21,14 @@ class MemeStore {
   onPostMemeFail (error) {
     console.log('Sorry but you couldn\'t add a new meme')
   }
+  onGetMemesByCategorySuccess (memes) {
+    console.log('made it')
+
+    this.memes = memes
+  }
+  onGetMemesByCategoryFail (error) {
+    console.log(error)
+  }
 }
 export default alt.createStore(MemeStore)
 

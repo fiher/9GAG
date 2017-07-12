@@ -53,7 +53,8 @@ export default class CreateMeme extends React.Component {
           <select onChange={CreateMemeActions.handleCategoryChange}>
             <option>NSFW</option>
             <option>Girls</option>
-            <option>ThemChicks</option>
+            <option>SoftUni</option>
+            <option>Bitch please</option>
           </select>
           <ReactFileReader base64= {true} handleFiles={CreateMemeActions.handleImageChange}>
             <button className='btn'>Upload</button>

@@ -23,9 +23,9 @@ module.exports = (app) => {
   // app.get('/api/memes', controllers.meme.search.get)
 
   // Categories routs
-  // app.get('/api/categories/all', controllers.category.getAllCategories.get)
-  // app.post('/api/categories/add', controllers.category.addCategory.post)
-  // app.get('/api/categories', controllers.category.searchByCategory.get)
+  app.get('/api/categories/all', controllers.category.getAllCategories.get)
+  app.post('/api/categories/add', controllers.category.addCategory.post)
+  app.get('/api/categories/:category', controllers.category.searchByCategory.get)
 
   // Meme likes
   // app.post('/api/memes/:memeId/like', controllers.meme.like.post);
