@@ -1,13 +1,26 @@
 const config = require('../config/encryption-config')
 
-export default class Decryption {
+class Encryption {
   constructor () {
     this.sequence = config.sequence
     this.secretKey = config.secretKey
   }
 
   crypt (text, publicKey, privateKey) {
-    return text
+    let sequence = this.sequence
+    let secretKey = this.secretKey
+    let that_ = this
+    function encryption (textToEncrypt, publicKey, privateKey, secretKey) {
+      for (let i = 0; i < sequence.length; i++) {
+        let cypher = 'cypher' + sequence[i]
+        textToEncrypt = that_[cypher](textToEncrypt, publicKey, privateKey, secretKey)
+      }
+      return textToEncrypt
+    }
+    secretKey = encryption(sequence, publicKey, privateKey, secretKey)
+    publicKey = encryption(publicKey, publicKey, privateKey, secretKey)
+    privateKey = encryption(privateKey, publicKey, privateKey, secretKey)
+    return encryption(text, publicKey, privateKey, secretKey)
   }
 
   cypher0 (text) {
@@ -19,7 +32,7 @@ export default class Decryption {
     let leftBlockOfText = ''
     let startIndex = 0
 
-    text = this.reverse(text)
+    text = text.split('').reverse().join('')
     for (let i = 0; i < splitInto; i++) {
       let textBlock = ''
       for (let k = 0; k < Math.floor(textLength / splitInto); k++) {
@@ -106,7 +119,7 @@ export default class Decryption {
 
   cypher1 (text) {
     CypherText()
-    text = this.reverse(text)
+    text = text.split('').reverse().join('')
     CypherText()
     return text
     function CypherText () {
@@ -132,7 +145,7 @@ export default class Decryption {
   cypher2 (text, publicKey, privateKey, secretKey) {
     let textLegnth = text.length
     let insertIndex = Math.floor(textLegnth / 3.0)
-    text = this.reverse(text)
+    text = text.split('').reverse().join('')
     let textAsList = text.split()
     let publicKeyLength = publicKey.length
     let privateKeyLength = privateKey.length
@@ -148,8 +161,9 @@ export default class Decryption {
     for (let i = 0; i < secretKeyLength; i++) {
       textAsList.splice(insertIndex + publicKeyLength + privateKeyLength, 0, secretKey[i])
     }
+
     text = textAsList.join('')
-    text = this.reverse(text)
+    text = text.split('').reverse().join('')
     return text
   }
 
@@ -211,3 +225,6 @@ export default class Decryption {
     return s.split('').reverse().join('')
   }
 }
+let encryption = new Encryption()
+let encryptedText = encryption.crypt('pesho', 'gosho', 'misho')
+console.log(encryptedText)
