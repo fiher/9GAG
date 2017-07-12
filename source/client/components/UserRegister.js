@@ -4,11 +4,11 @@ import FormActions from '../actions/FormActions'
 import UserActions from '../actions/UserActions'
 import FormStore from '../stores/FormStore'
 
-import Form from './helper-componenets/form/Form'
-import TextGroup from './helper-componenets/form/TextGroup'
-import RadioGroup from './helper-componenets/form/RadioGroup'
-import RadioElement from './helper-componenets/form/RadioElement'
-import Submit from './helper-componenets/form/Submit'
+import Form from './helper-components/form/Form'
+import TextGroup from './helper-components/form/TextGroup'
+import RadioGroup from './helper-components/form/RadioGroup'
+import RadioElement from './helper-components/form/RadioElement'
+import Submit from './helper-components/form/Submit'
 
 export default class UserRegister extends React.Component {
   constructor (props) {

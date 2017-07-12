@@ -5,9 +5,9 @@ import FormActions from '../actions/FormActions'
 
 import FormStore from '../stores/FormStore'
 
-import Form from './helper-componenets/form/Form'
-import TextGroup from './helper-componenets/form/TextGroup'
-import Submit from './helper-componenets/form/Submit'
+import Form from './helper-components/form/Form'
+import TextGroup from './helper-components/form/TextGroup'
+import Submit from './helper-components/form/Submit'
 
 export default class UserLogin extends React.Component {
   constructor (props) {

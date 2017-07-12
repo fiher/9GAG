@@ -26,13 +26,13 @@ export default class CreateMeme extends React.Component {
     const value = target.value
     const meme = this.state.meme
     meme[field] = value
-    this.setState({meme})
+    // this.setState({meme})
   }
   createMeme (event) {
     let response = Imgur.createFileLoader(this.state.meme.image)
     if (response.success) {
       console.log(response)
-      this.state.meme.image = response.data.link
+      // this.state.meme.image = response.data.link
     }
     MemeActions.postMeme(this.state.meme)
   }
