@@ -1,5 +1,5 @@
 import React from 'react'
-import TextInput from 'helper-componenets/TextInput'
+import TextInput from 'source/client/components/helper-components/TextInput'
 
 export default class Login extends React.Component {
   render () {

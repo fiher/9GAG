@@ -12,7 +12,6 @@ export default class TextInput extends React.Component {
           placeholder={this.props.placeholder}
           onChange={this.props.onChange}
           value={this.props.value}/>
-        <span className='error'>{this.props.error}</span>
       </div>
     )
   }

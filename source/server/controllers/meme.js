@@ -1,35 +1,36 @@
 const Meme = require('../models/Meme')
-const createFileLoader = require('../utilities/imgur-api')
+const Imgur = require('../../client/imgur-api')
 
 module.exports = {
   add: {
     post: (req, res) => {
-      let userId = req.user._id
-      let image = res.image
-      let response = createFileLoader(image)
-      if (response.sucess) {
-        let memeData = {
-          title: res.title,
-          author: userId,
-          memeUrl: response.data.link,
-          category: res.category,
-          upVotes: [],
-          downVotes: []
-        }
-        Meme.create(memeData).then(meme => {
-          res.status(200).send({meme})
-        })
+      console.log(req.body)
+      console.log(res.body)
+      let memeData = {
+        title: req.body.title,
+        author: '59646344fec92735500e1d7a',
+        memeUrl: req.body.memeUrl,
+        category: req.body.category,
+        upVotes: [],
+        downVotes: []
       }
+      Meme.create(memeData).then(meme => {
+        res.status(200).send({meme})
+      })
     }
   },
   getAllMemes: {
     get: (req, res) => {
       Meme.find({})
         .sort({createdOn: -1})
-        .populate('author', 'category', 'comments')
         .then(memes => {
+          console.log('these are my memes')
+          console.log(memes)
           res.status(200).send(memes)
-        })
+        }).catch((err) => {
+        res.status(400).send(err)
+      })
+
     }
   },
   getUserPosts: {
@@ -40,6 +41,16 @@ module.exports = {
   search: {
     get: (req, res) => {
 
+    }
+  },
+  getOneMeme: {
+    get: (req, res) => {
+      let memeID = res._memeID
+      Meme.find({id: memeID})
+        .populate('author', 'category', 'comments')
+        .then(meme => {
+          res.status(200).send(meme)
+        })
     }
   }
 }

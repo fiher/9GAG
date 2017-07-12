@@ -1,5 +1,7 @@
 import React from 'react'
 
+import MemeActions from '../actions/MemeActions'
+import MemeStore from '../stores/MemeStore'
 export default class MemeInfo extends React.Component {
   constructor (props) {
     super(props)
@@ -22,7 +24,7 @@ export default class MemeInfo extends React.Component {
           <img src={this.state.meme.link}/>
         </div>
         <div>
-          {/*{this.getUpvotesCount()}*/}
+          {/* {this.getUpvotesCount()} */}
         </div>
         Hi from MemeInfo!
       </div>
