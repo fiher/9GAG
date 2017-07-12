@@ -22,7 +22,6 @@ class CreateMemeStore {
     this.error = error
   }
   onHandleTitleChange (event) {
-    console.log(event.target.value)
     this.title = event.target.value
   }
   onHandleImageChange (file) {
