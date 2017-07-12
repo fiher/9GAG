@@ -4,8 +4,6 @@ const Imgur = require('../../client/imgur-api')
 module.exports = {
   add: {
     post: (req, res) => {
-      console.log(req.body)
-      console.log(res.body)
       let memeData = {
         title: req.body.title,
         author: '59646344fec92735500e1d7a',

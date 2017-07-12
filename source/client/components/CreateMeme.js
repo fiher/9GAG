@@ -2,43 +2,44 @@
  * Created by PC on 11-Jul-17.
  */
 import React from 'react'
-import MemeActions from '../actions/MemeActions'
-import MemeStore from '../stores/MemeStore'
-import Imgur from '../imgur-api'
+import CreateMemeStore from '../stores/CreateMemeStore'
+import CreateMemeActions from '../actions/CreateMemeActions'
+import ReactFileReader from 'react-file-reader'
+import { createFileLoader } from '../imgur-api'
 export default class CreateMeme extends React.Component {
   constructor (props) {
     super(props)
-    this.state = MemeStore.getState()
-    this.state = {
-      meme: {
-        title: '',
-        image: '',
-        category: ''
-      },
-      error: ''
-    }
+    this.state = CreateMemeStore.getState()
+
+    this.onChange = this.onChange.bind(this)
     this.handleMemeChange = this.handleMemeChange.bind(this)
     this.createMeme = this.createMeme.bind(this)
   }
   handleMemeChange (event) {
-    const target = event.target
-    const field = target.name
-    const value = target.value
-    const meme = this.state.meme
-    meme[field] = value
-    // this.setState({meme})
+  }
+  componentDidMount () {
+    CreateMemeStore.listen(this.onChange)
+  }
+  onChange (state) {
+    this.setState(state)
   }
   createMeme (event) {
-    let response = Imgur.createFileLoader(this.state.meme.image)
-    if (response.success) {
-      console.log(response)
-      // this.state.meme.image = response.data.link
+    event.preventDefault()
+    console.log('made it bitches')
+    if(this.state.category === ''){
+      this.state.category = 'NSFW'
     }
-    MemeActions.postMeme(this.state.meme)
+    CreateMemeActions.postMeme(this.state)
   }
   render () {
     return (
       <div>
+        <div className='has-error'>
+          {this.state.error}
+        </div>
+        <div className='has-success'>
+          {this.state.success}
+        </div>
         <form>
           <div className="inputField">
             <label htmlFor='title'>Title</label>
@@ -47,15 +48,17 @@ export default class CreateMeme extends React.Component {
               name='title'
               id='title'
               placeholder='title'
-              onChange={this.handleMemeChange.bind(this)}
-              value=''/>
+              onChange={CreateMemeActions.handleTitleChange}
+              value={this.state.title}/>
           </div>
-          <select onChange={this.handleMemeChange.bind(this)}>
+          <select onChange={CreateMemeActions.handleCategoryChange}>
             <option>NSFW</option>
             <option>Girls</option>
             <option>ThemChicks</option>
           </select>
-          <input type='file' onChange={this.handleMemeChange.bind(this)}/>
+          <ReactFileReader base64= {true} handleFiles={CreateMemeActions.handleImageChange}>
+            <button className='btn'>Upload</button>
+          </ReactFileReader>
           <input type='submit' onClick={this.createMeme.bind(this)} value='Create Meme'/>
         </form>
       </div>
