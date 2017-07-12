@@ -27,7 +27,7 @@ class FormStore {
     this.message = ''
   }
 
-  onRegisterUserSuccess (user) {
+  onRegisterUserSuccess () {
     console.log('FormStore register success')
 
     this.username = ''

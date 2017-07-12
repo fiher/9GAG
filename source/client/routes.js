@@ -13,11 +13,11 @@ import UserLogin from './components/UserLogin'
 export default (
   <Route component={ App }>
     <Route exact path='/' component={Home}/>
+    <Route path='/user/register' component={UserRegister}/>
+    <Route path='/user/login' component={UserLogin}/>
     <Route path='/memes/all' component={AllMemes}/>
     <Route path='/memes/:id' component={MemeInfo}/>
     <Route path='/users/all' component={AllUsers}/>
     <Route path='/users/profile/:id' component={AuthorInfo}/>
-    <Route path="/user/register" component={ UserRegister }/>
-    <Route path="/user/login" component={ UserLogin } />
   </Route>
 )

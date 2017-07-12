@@ -12,6 +12,7 @@ class UserActions {
   }
 
   registerUser (data) {
+    console.log('I am in UserActions registerUser')
     let request = {
       method: 'post',
       url: '/user/register',
