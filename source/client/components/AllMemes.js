@@ -6,6 +6,7 @@ import MemeStore from '../stores/MemeStore'
 export default class AllMemes extends React.Component {
   constructor (props) {
     super(props)
+
     this.state = MemeStore.getState()
 
     this.onChange = this.onChange.bind(this)
@@ -19,29 +20,34 @@ export default class AllMemes extends React.Component {
 
     MemeActions.getAllMemes()
   }
+
+  componentWillUnmount () {
+    MemeStore.unlisten(this.onChange)
+  }
+
   render () {
     let memes = []
-    for (let i = 0; i < this.state.memes.length; i++) {
+    this.state.memes.forEach((meme, i) => {
       memes.push(
-        <div className='meme'>
-        <div className='row'>
-          <div className='title'>
-            <span>{this.state.memes[i].title}</span>
-          </div>
+        <div className='meme' key={i+1}>
           <div className='row'>
-            <div className='date'>
-              <span>{this.state.memes[i].createdOn}</span>
+            <div className='title'>
+              <span>{meme.title}</span>
+            </div>
+            <div className='row'>
+              <div className='date'>
+                <span>{meme.createdOn}</span>
+              </div>
             </div>
           </div>
+          <img src={meme.memeUrl}/>
         </div>
-          <img src={this.state.memes[i].memeUrl}/>
-      </div>
       )
-    }
+    })
+
     return (
       <div>
         {memes}
-        <h1 className="container">Hi from AllMemes!</h1>
       </div>
     )
   }

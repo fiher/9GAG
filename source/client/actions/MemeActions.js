@@ -17,7 +17,10 @@ class MemeActions {
     $.ajax(request)
       .done(data => this.getAllMemesSuccess(data))
       .fail(err => this.getAllMemesFail(err))
+
+    return true
   }
+
   postMeme (data) {
     let request = {
       method: 'post',
@@ -29,6 +32,9 @@ class MemeActions {
     $.ajax(request)
       .done(data => this.postMemeSuccess(data))
       .fail(err => this.postMemeFail(err))
+
+    return true
   }
 }
+
 export default alt.createActions(MemeActions)

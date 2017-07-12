@@ -19,7 +19,7 @@ class MemeStore {
     this.meme = meme
   }
   onPostMemeFail (error) {
-
+    console.log('Sorry but you couldn\'t add a new meme')
   }
 }
 export default alt.createStore(MemeStore)
