@@ -1,4 +1,5 @@
 import alt from '../alt'
+
 import UserActions from '../actions/UserActions'
 
 class UserStore {
