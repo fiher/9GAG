@@ -7,10 +7,10 @@ class CategoryStore {
     this.categories = []
     this.error = ''
     this.success = ''
+    this.name = ''
   }
 
   onGetAllCategoriesSuccess (categories) {
-    console.log('successfully taken all categories')
     this.categories = categories
   }
   onGetAllCategoriesFail (error) {
@@ -22,6 +22,9 @@ class CategoryStore {
   }
   onAddCategoryFail (error) {
     this.error = error
+  }
+  onHandleNameChange (event) {
+    this.name = event.target.value
   }
 }
 export default alt.createStore(CategoryStore)

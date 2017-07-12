@@ -12,6 +12,7 @@ import UserLogin from './components/UserLogin'
 import CreateMeme from './components/CreateMeme'
 import authorize from './utilities/Authorize'
 import MemesByCategory from'./components/MemesByCategory'
+import CreateCategory from './components/CreateCategory'
 export default (
   <Route component={ App }>
     <Route exact path='/' component={Home}/>
@@ -23,5 +24,6 @@ export default (
     <Route path='/memes/:id' component={authorize(MemeInfo)}/>
     <Route path='/users/all' component={authorize(AllUsers)}/>
     <Route path='/createMeme' component={authorize(CreateMeme)}/>
+      <Route path='/createCategory' component={authorize(CreateCategory)}/>
   </Route>
 )

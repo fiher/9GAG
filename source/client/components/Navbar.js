@@ -23,6 +23,9 @@ export default class Navbar extends React.Component {
             <li className="nav-item">
               <Link to='/createMeme'>CreateMeme</Link>
             </li>
+            <li className="nav-item">
+              <Link to='/createCategory'>Create Category</Link>
+            </li>
           </ul>
           {navbarUserMenu}
         </div>

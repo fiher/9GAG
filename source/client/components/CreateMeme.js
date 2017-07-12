@@ -1,11 +1,9 @@
-
 import React from 'react'
 import CreateMemeStore from '../stores/CreateMemeStore'
 import CreateMemeActions from '../actions/CreateMemeActions'
 import ReactFileReader from 'react-file-reader'
 import CategoryActions from '../actions/CategoryActions'
 import CategoryStore from '../stores/CategoryStore'
-import { createFileLoader } from '../imgur-api'
 export default class CreateMeme extends React.Component {
   constructor (props) {
     super(props)
@@ -15,35 +13,43 @@ export default class CreateMeme extends React.Component {
     this.handleMemeChange = this.handleMemeChange.bind(this)
     this.createMeme = this.createMeme.bind(this)
   }
+
   handleMemeChange (event) {
   }
+
   componentDidMount () {
     CreateMemeStore.listen(this.onChange)
     CategoryActions.getAllCategories()
+    this.categories = CategoryStore.getState()
   }
+
   componentWillUnmount () {
     CreateMemeStore.unlisten(this.onChange)
   }
+
   onChange (state) {
     this.setState(state)
   }
+
   createMeme (event) {
     event.preventDefault()
     console.log('made it bitches')
-    if(this.state.category === ''){
+    if (this.state.category === '') {
       this.state.category = 'NSFW'
     }
     CreateMemeActions.postMeme(this.state)
   }
+
   render () {
     let categories = []
-      this.categories.categories.forEach((category, i) => {
-        categories.push(
-          <option key={i + 1}>
-            {category.name}
-          </option>
-        )
-      })
+    console.log(this.categories)
+    this.categories.categories.forEach((category, i) => {
+      categories.push(
+        <option key={i + 1}>
+          {category.name}
+        </option>
+      )
+    })
     return (
       <div>
         <div className='has-error'>
@@ -66,7 +72,7 @@ export default class CreateMeme extends React.Component {
           <select onChange={CreateMemeActions.handleCategoryChange}>
             {categories}
           </select>
-          <ReactFileReader base64= {true} handleFiles={CreateMemeActions.handleImageChange}>
+          <ReactFileReader base64={true} handleFiles={CreateMemeActions.handleImageChange}>
             <button className='btn'>Upload</button>
           </ReactFileReader>
           <input type='submit' onClick={this.createMeme.bind(this)} value='Create Meme'/>
