@@ -8,15 +8,16 @@ class UserStore {
     this.loggedInUserId = ''
     this.username = ''
     this.roles = []
+
+    this.addUserParams = this.addUserParams.bind(this)
+  }
+
+  onRegisterUserSuccess (user) {
+    this.addUserParams(user)
   }
 
   onLoginUserSuccess (user) {
-    this.loggedInUserId = user._id
-    this.username = user.username
-    this.roles = user.roles
-
-    localStorage.setItem('userId', JSON.stringify(this.loggedInUserId))
-    localStorage.setItem('username', JSON.stringify(this.username))
+    this.addUserParams(user)
   }
 
   onLoginUserFail () {
@@ -29,6 +30,15 @@ class UserStore {
     this.roles = ''
 
     localStorage.clear()
+  }
+
+  addUserParams (user) {
+    this.loggedInUserId = user._id
+    this.username = user.username
+    this.roles = user.roles
+
+    localStorage.setItem('userId', JSON.stringify(this.loggedInUserId))
+    localStorage.setItem('username', JSON.stringify(this.username))
   }
 }
 
