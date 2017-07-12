@@ -14,6 +14,9 @@ class UserStore {
     this.loggedInUserId = user._id
     this.username = user.username
     this.roles = user.roles
+
+    localStorage.setItem('userId', JSON.stringify(this.loggedInUserId))
+    localStorage.setItem('username', JSON.stringify(this.username))
   }
 
   onLoginUserFail () {
@@ -24,6 +27,8 @@ class UserStore {
     this.loggedInUserId = ''
     this.username = ''
     this.roles = ''
+
+    localStorage.clear()
   }
 }
 

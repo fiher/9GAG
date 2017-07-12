@@ -29,7 +29,7 @@ module.exports = {
             return res.status(200).send({ message: 'Wrong credentials!' })
           }
 
-          res.status(200)
+          res.status(200).end()
         })
       })
       .catch(error => {
