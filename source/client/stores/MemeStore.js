@@ -8,6 +8,18 @@ class MemeStore {
     this.meme = {}
   }
 
+  onAddCommentSuccess (data) {
+    console.log(data)
+    let comment = data.comment
+    let memeId = data.comment.meme
+
+    for (let meme of this.memes) {
+      if (meme._id === memeId) {
+        meme.comments.push(comment)
+      }
+    }
+  }
+
   onGetAllMemesSuccess (memes) {
     this.memes = memes
   }

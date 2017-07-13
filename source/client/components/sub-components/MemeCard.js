@@ -52,7 +52,8 @@ export default class MovieCard extends React.Component {
         {this.state.showLikesPanel ?
           <MemeLikePanel memeId={this.props.meme._id} /> : null}
         {this.state.showCommentsPanel ?
-          <MemeCommentsPanel memeId={this.props.meme._id} /> : null}
+          <MemeCommentsPanel comments={this.props.meme.comments}
+                             memeId={this.props.meme._id} /> : null}
         <div id='clear'/>
       </div>
     )

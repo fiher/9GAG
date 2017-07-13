@@ -11,6 +11,8 @@ module.exports = (app) => {
   app.get('/api/memes/all', controllers.meme.getAllMemes.get)
   app.post('/api/memes/add', controllers.meme.add.post)
   app.get('/api/memes/:memeId', controllers.meme.getOneMeme.get)
+  app.post('/api/memes/:memeId/comments',
+    controllers.comment.getMemeComments.post)
 
   // Categories routs
   app.get('/api/categories/all', controllers.category.getAllCategories.get)

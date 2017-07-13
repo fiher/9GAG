@@ -19,6 +19,7 @@ module.exports = {
   getAllMemes: {
     get: (req, res) => {
       Meme.find({})
+        .populate('comments')
         .sort({createdOn: -1})
         .then(memes => {
           console.log('these are my memes')

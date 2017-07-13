@@ -2,6 +2,7 @@ import alt from '../alt'
 
 import FormActions from '../actions/FormActions'
 import UserActions from '../actions/UserActions'
+import MemeActions from '../actions/MemeActions'
 
 class FormStore {
   constructor () {
@@ -11,7 +12,9 @@ class FormStore {
       onRegisterUserFail: UserActions.registerUserFail,
       onRegisterUserSuccess: UserActions.registerUserSuccess,
       onLoginUserSuccess: UserActions.loginUserSuccess,
-      onLoginUserFail: UserActions.loginUserFail
+      onLoginUserFail: UserActions.loginUserFail,
+      onAddCommentSuccess: MemeActions.addCommentSuccess,
+      onAddCommentFail: MemeActions.addCommentFail
     })
 
     this.username = ''
@@ -24,6 +27,8 @@ class FormStore {
     this.formSubmitState = ''
     this.usernameValidationState = ''
     this.passwordValidationState = ''
+    this.commentValidationState = ''
+    this.comment = ''
     this.message = ''
   }
 
@@ -91,6 +96,24 @@ class FormStore {
     this.usernameValidationState = ''
     this.passwordValidationState = ''
     this.message = 'Please login'
+  }
+
+  onAddCommentSuccess () {
+    this.comment = ''
+  }
+
+  onAddCommentFail (err) {
+    this.commentValidationState = 'has-error'
+    this.message = err.message
+  }
+
+  onCommentValidationFail (err) {
+    this.commentValidationState = 'has-error'
+    this.message = 'Please enter comment text.'
+  }
+
+  onHandleCommentChange (e) {
+    this.comment = e.target.value
   }
 
   onHandleUsernameChange (e) {

@@ -1,4 +1,5 @@
 const Comment = require('../models/Comment')
+const Meme = require('../models/Meme')
 
 module.exports = {
   getMemeComments: {
@@ -13,7 +14,7 @@ module.exports = {
         })
     },
     post: (req, res) => {
-      let userId = req.user._id
+      let userId = req.body.author
       let memeId = req.params.memeId
       let content = req.body.content
       if (content.length < 1) {
@@ -28,6 +29,9 @@ module.exports = {
           downVotes: []
         }
         Comment.create(commentData).then(comment => {
+          Meme.findById(memeId).then(meme => {
+            meme.comments.push(comment._id)
+          })
           res.status(200).send({comment})
         })
       }

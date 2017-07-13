@@ -7,7 +7,10 @@ class MemeActions {
       'postMemeSuccess',
       'postMemeFail',
       'getMemesByCategorySuccess',
-      'getMemesByCategoryFail'
+      'getMemesByCategoryFail',
+      'emptyMemes',
+      'addCommentSuccess',
+      'addCommentFail'
     )
   }
   getAllMemes () {
@@ -47,6 +50,24 @@ class MemeActions {
     $.ajax(request)
       .done(data => this.getMemesByCategorySuccess(data))
       .fail(err => this.getMemesByCategoryFail(err))
+  }
+
+  addComment (memeId, comment) {
+    let request = {
+      method: 'POST',
+      url: `/api/memes/${memeId}/comments`,
+      data: JSON.stringify({
+        content: comment,
+        author: JSON.parse(localStorage.getItem('userId'))
+      }),
+      contentType: 'application/json'
+    }
+
+    $.ajax(request)
+      .done(data => this.addCommentSuccess(data))
+      .fail(err => this.addCommentFail(err.responseJSON))
+
+    return true
   }
 }
 
