@@ -14,7 +14,7 @@ module.exports = (app) => {
 
   // Categories routs
   app.get('/api/categories/all', controllers.category.getAllCategories.get)
-  app.post('/api/categories/add', controllers.category.addCategory.post)
+  app.post('/api/admin/category/add', controllers.category.addCategory.post)
   app.get('/api/categories/:category', controllers.category.searchByCategory.get)
 
   // Meme likes

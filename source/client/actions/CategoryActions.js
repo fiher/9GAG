@@ -5,7 +5,8 @@ class CategoryActions {
       'getAllCategoriesSuccess',
       'getAllCategoriesFail',
       'addCategorySuccess',
-      'addCategoryFail'
+      'addCategoryFail',
+      'handleNameChange'
     )
     this.data = {}
   }
@@ -20,10 +21,11 @@ class CategoryActions {
       .fail(err => this.getAllCategoriesFail(err))
   }
   addCategory (data) {
+    console.log(data)
     let request = {
       method: 'post',
       url: '/api/admin/category/add',
-      data: JSON.Stringify(data),
+      data: JSON.stringify({'name': data}),
       contentType: 'application/json'
     }
     $.ajax(request)
