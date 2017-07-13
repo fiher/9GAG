@@ -31,6 +31,7 @@ module.exports = {
         Comment.create(commentData).then(comment => {
           Meme.findById(memeId).then(meme => {
             meme.comments.push(comment._id)
+            meme.save()
           })
           res.status(200).send({comment})
         })
