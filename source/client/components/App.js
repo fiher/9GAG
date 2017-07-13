@@ -2,7 +2,6 @@ import React from 'react'
 
 import Navbar from './Navbar'
 import Footer from './Footer'
-import CategoryMenu from './sub-components/CategoryMenu'
 import UserStore from '../stores/UserStore'
 
 export default class App extends React.Component {

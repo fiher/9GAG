@@ -72,7 +72,6 @@ export default class UserLogin extends React.Component {
 
         <Submit type="btn-primary"
                 value="Login" />
-
       </Form>
     )
   }

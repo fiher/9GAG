@@ -33,7 +33,6 @@ export default class UserRegister extends React.Component {
   }
 
   handleSubmit (e) {
-    console.log('I am in submit func!')
     e.preventDefault()
 
     let userData = {

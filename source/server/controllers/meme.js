@@ -1,5 +1,4 @@
 const Meme = require('../models/Meme')
-const Imgur = require('../../client/imgur-api')
 
 module.exports = {
   add: {

@@ -1,7 +1,5 @@
 import React from 'react'
 
-import MemeActions from '../actions/MemeActions'
-import MemeStore from '../stores/MemeStore'
 export default class MemeInfo extends React.Component {
   constructor (props) {
     super(props)

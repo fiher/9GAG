@@ -2,10 +2,6 @@ import React from 'react'
 
 import UserStore from '../stores/UserStore'
 
-// import UserProfileInfo from './sub-components/UserProfileInfo'
-// import UserRatedMovies from './sub-components/UserRatedMovies'
-// import UserReviews from './sub-components/UserReviews'
-
 export default class UserProfile extends React.Component {
   constructor (props) {
     super(props)
@@ -30,12 +26,7 @@ export default class UserProfile extends React.Component {
   render () {
     return (
       <div className="container">
-        {/*<UserProfileInfo roles={this.state.roles}*/}
-                         {/*name={this.state.name}*/}
-                         {/*information={this.state.information} />*/}
-        {/*<UserRatedMovies votes={this.state.votes} />*/}
-        {/*<UserReviews reviews={this.state.reviews} />*/}
-        Hi from UserInfo
+        Hi from UserProfileInfo
       </div>
     )
   }

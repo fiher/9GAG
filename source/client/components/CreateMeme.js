@@ -1,10 +1,8 @@
-
 import React from 'react'
 import CreateMemeStore from '../stores/CreateMemeStore'
 import CreateMemeActions from '../actions/CreateMemeActions'
 import ReactFileReader from 'react-file-reader'
 
-import { createFileLoader } from '../imgur-api'
 export default class CreateMeme extends React.Component {
   constructor (props) {
     super(props)

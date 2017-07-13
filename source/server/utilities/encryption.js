@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+
 module.exports = {
   generateSalt: () => {
     return crypto.randomBytes(128).toString('base64')

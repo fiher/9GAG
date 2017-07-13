@@ -10,11 +10,9 @@ class CategoryStore {
   }
 
   onGetAllCategoriesSuccess (categories) {
-    console.log('successfully taken all categories')
     this.categories = categories
   }
   onGetAllCategoriesFail (error) {
-    console.log('ooo shit')
     this.error = error
   }
   onAddCategorySuccess (success) {
