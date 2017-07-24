@@ -17,6 +17,7 @@ export default class MemeInfo extends React.Component {
           <small>Created on: {createdDate}</small>
         </div>
         <br />
+          <small>Author: {this.props.meme.author.username} </small>
         <span className="likes">Likes:
           <strong> {this.props.meme.upVotedMemes ?
             this.props.meme.upVotedMemes.length : 0}

@@ -32,9 +32,9 @@ class CreateMemeActions {
     return $.ajax(imageUploadRequest)
   }
   imageUploaded (response) {
-    console.log(response.data.link)
     let data = this.data
     data.memeUrl = response.data.link
+    data.author = localStorage.getItem('userId')
     let request = {
       method: 'post',
       url: '/api/memes/add',
@@ -49,4 +49,5 @@ class CreateMemeActions {
     this.data.error = error
   }
 }
+
 export default alt.createActions(CreateMemeActions)

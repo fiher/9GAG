@@ -21,7 +21,6 @@ class CategoryActions {
       .fail(err => this.getAllCategoriesFail(err))
   }
   addCategory (data) {
-    console.log(data)
     let request = {
       method: 'post',
       url: '/api/admin/category/add',

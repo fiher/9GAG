@@ -21,6 +21,7 @@ export default class CreateMeme extends React.Component {
   componentDidMount () {
     CreateMemeStore.listen(this.onChange)
     CategoryActions.getAllCategories()
+    CategoryActions.getAllCategories()
     this.categories = CategoryStore.getState()
   }
 
@@ -38,19 +39,18 @@ export default class CreateMeme extends React.Component {
     if (this.state.category === '') {
       this.state.category = 'NSFW'
     }
+    this.state.author = localStorage.userID
     CreateMemeActions.postMeme(this.state)
   }
 
   render () {
-    let categories = []
     console.log(this.categories)
-    this.categories.categories.forEach((category, i) => {
-      categories.push(
+    let categories = this.categories.categories.map((category, i) => (
         <option key={i + 1}>
           {category.name}
         </option>
       )
-    })
+    )
     return (
       <div>
         <div className='has-error'>

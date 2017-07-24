@@ -28,16 +28,14 @@ export default class NavbarUserMenu extends React.Component {
   render () {
     let categories = []
     if (this.state.categories.length > 0) {
-      this.state.categories.forEach((category, i) => {
-        categories.push(
-          <div key={i+1}>
+      categories = this.state.categories.map((category, i) => (
+        <div key={i + 1}>
           <div>
             <Link to={`/search/${category.name}`}>
               {category.name}
             </Link>
           </div>
-        </div>)
-      })
+        </div>))
     }
     return (
       <div>

@@ -21,6 +21,7 @@ class MemeStore {
   }
 
   onGetAllMemesSuccess (memes) {
+    console.log(memes)
     this.memes = memes
   }
 

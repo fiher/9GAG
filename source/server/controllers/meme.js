@@ -5,7 +5,7 @@ module.exports = {
     post: (req, res) => {
       let memeData = {
         title: req.body.title,
-        author: '59646344fec92735500e1d7a',
+        author: req.body.author,
         memeUrl: req.body.memeUrl,
         category: req.body.category,
         upVotes: [],
@@ -19,7 +19,7 @@ module.exports = {
   getAllMemes: {
     get: (req, res) => {
       Meme.find({})
-        .populate('comments')
+        .populate('comments', 'author')
         .sort({createdOn: -1})
         .then(memes => {
           console.log('these are my memes')

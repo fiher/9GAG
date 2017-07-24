@@ -40,7 +40,7 @@ module.exports = {
   login: {
     post: (req, res) => {
       let userData = req.body
-
+      console.log(userData)
       User.findOne({username: userData.username}).then(user => {
         if (!user || !user.authenticate(userData.password)) {
           return res.status(401).send({ message: 'Wrong credentials!' })

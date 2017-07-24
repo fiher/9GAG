@@ -10,7 +10,6 @@ export default class AllMemes extends React.Component {
     super(props)
 
     this.state = MemeStore.getState()
-
     this.onChange = this.onChange.bind(this)
   }
   onChange (state) {
@@ -28,14 +27,15 @@ export default class AllMemes extends React.Component {
   }
 
   render () {
+    console.log(this.state.memes)
     let memes = this.state.memes.map((meme, i) => {
+      console.log(meme)
       return (
         <MemeCard key={meme._id}
                   meme={meme}
                   index={i}/>
       )
     })
-
     return (
       <div className="container">
         <h3 className="text-center">Welcome to
